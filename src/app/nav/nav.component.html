@@ -1,7 +1,13 @@
-<p *ngIf="authService.isLoggedIn()">You are logged in!</p>
 <ul>
   <li><a routerLink="/">Home</a></li>
-  <li><a routerLink="/login">Login</a></li>
-  <li *ngIf="authService.isLoggedIn()"><a routerLink="/orders">Orders</a></li>
+  <li *ngIf="!authService.isLoggedIn()">
+    <a routerLink="/login">Login</a>
+  </li>
+  <li *ngIf="authService.isLoggedIn() && authService.currentUser.admin">
+    <a routerLink="/orders">Orders</a>
+  </li>
   <li><a routerLink="/" (click)="authService.logout()">Logout</a></li>
 </ul>
+<p *ngIf="authService.isLoggedIn()">
+  Welcome {{ authService.currentUser.name }}!
+</p>

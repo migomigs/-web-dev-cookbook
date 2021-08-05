@@ -7,7 +7,7 @@ import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { BackendInterceptorService } from './backend-interceptor.service';
 import { HomeComponent } from './home/home.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   { path: 'orders', 
     component: OrdersComponent,
-    canActivate: [AuthGuardService]}
+    canActivate: [AuthGuard]}
   ];
 
 @NgModule({

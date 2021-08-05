@@ -40,4 +40,11 @@ export class AuthService {
    public logout(){
      localStorage.removeItem('token');
    }
+
+   get currentUser(){
+      let token = localStorage.getItem('token');
+      if (token)
+      return new JwtHelperService().decodeToken(token);
+      return null;
+   }
 }
