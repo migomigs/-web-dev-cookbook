@@ -15,13 +15,17 @@ import { LoginComponent } from './login/login.component';
 import { OrdersComponent } from './orders/orders.component';
 import { NavComponent } from './nav/nav.component';
 import { CommonModule } from '@angular/common';
+import { NoAccessComponent } from './no-access/no-access.component';
+import { AdminAuthGuard } from './admin-auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   { path: 'orders', 
     component: OrdersComponent,
-    canActivate: [AuthGuard]}
+    canActivate: [AuthGuard, AdminAuthGuard]
+  },
+  {path: 'no-access', component: NoAccessComponent}
   ];
 
 @NgModule({
@@ -30,7 +34,8 @@ const routes: Routes = [
     HomeComponent,
     LoginComponent,
     OrdersComponent,
-    NavComponent
+    NavComponent,
+    NoAccessComponent
   ],
   imports: [
     BrowserModule,

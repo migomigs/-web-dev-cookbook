@@ -8,6 +8,3 @@
   </li>
   <li><a routerLink="/" (click)="authService.logout()">Logout</a></li>
 </ul>
-<p *ngIf="authService.isLoggedIn()">
-  Welcome {{ authService.currentUser.name }}!
-</p>
